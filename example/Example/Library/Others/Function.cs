@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.Others;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class Function
+    public class Function : IVoid
     {
 
         /// <summary>
