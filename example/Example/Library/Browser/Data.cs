@@ -24,7 +24,7 @@ namespace Library.Browser
         [Tested]
         public T getValueById<T>(string indentifer)
         {
-           return jquery.jQuery.select(indentifer.Id()).val().As<T>();
+            return jquery.jQuery.select(indentifer.Id()).val().As<T>();
         }
 
         /// <summary>
@@ -41,9 +41,14 @@ namespace Library.Browser
         }
 
 
+        public void setValue(string indentifer, string value)
+        {
+            jquery.jQuery.select(indentifer).val(value);
+        }
+
         /// <summary>
         ///  Lấy kendo grid để xử lý
-        /// </summary>
+        /// </summary> dom.alert("Đã chạy");
         /// <param name="indentifer"> Id </param>
         /// <returns></returns>
         /// 
@@ -58,11 +63,24 @@ namespace Library.Browser
         /// </summary>
         /// <param name="grid"> grid được lấy từ hàm getKendoGrid</param>
         /// 
-            
+
         [Tested]
         public void kendGridReloadData(dynamic grid)
         {
             grid.dataSource.read();
+        }
+
+
+        /// <summary>
+        ///  Jquery selector
+        /// </summary>
+        /// <param name="jquerySelector"></param>
+        /// <returns></returns>
+        /// 
+        [Tested]
+        public dynamic select(string jquerySelector)
+        {
+            return jquery.jQuery.select(jquerySelector).As<dynamic>();
         }
     }
 }

@@ -86,6 +86,11 @@ namespace Modules.StaffManager.Functions
         [Tested]
         private void setSearchKeyword_ok(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
         {
+            //dom.alert("Ok");
+            //var try_dialog = new Library.Browser.Dialog("editOrCreateStaff");
+            //System.Threading.Thread.Sleep(3000);
+            //try_dialog.HideModalDialog();
+
             var KendoGrid = this.data.getKendoGrid("grid");
 
             this.data.kendGridReloadData(KendoGrid);

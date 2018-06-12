@@ -47,8 +47,10 @@ namespace Library
                 case "GET":
 
                     if (!data.Is<string>())
-                        data = jquery.jQuery.param(data.As<object>());
-
+                    {
+                        var JsonData = data.As<dynamic>().toJSON();
+                        data = jquery.jQuery.param(JsonData);
+                    }
                     break;
                 case "POST":
 

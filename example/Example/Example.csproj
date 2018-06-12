@@ -50,6 +50,7 @@
     <Compile Include="Ajax\Home\GetUserInfo.cs" />
     <Compile Include="Library\Attributes\TestedAttribute.cs" />
     <Compile Include="Library\Browser\Data.cs" />
+    <Compile Include="Library\Browser\Dialog.cs" />
     <Compile Include="Library\Dependecies\DI.cs" />
     <Compile Include="Library\Dependecies\EnsureLibrariesInstalledCorrectly_func.cs" />
     <Compile Include="Library\Http\HttpMethod.cs" />
@@ -67,7 +68,8 @@
     <Compile Include="Modules\Module1\ExampleFunc.cs" />
     <Compile Include="Modules\Module1\getUserInfo_class.cs" />
     <Compile Include="Modules\StaffManager\Functions\AddEventHandler.cs" />
-    <Compile Include="Modules\StaffManager\Functions\GetStaffById.cs" />
+    <Compile Include="Modules\StaffManager\Classes\EditStaffDialog.cs" />
+    <Compile Include="Modules\StaffManager\Functions\ShowDialogEditStaffById.cs" />
     <Compile Include="Modules\StaffManager\Functions\SetSearchKeyword.cs" />
     <Compile Include="Modules\StaffManager\StaffManager_class.cs" />
     <Compile Include="Modules\StaffManager\Startup.cs" />
