@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\AO_NEW_dev\AdvertisingOnline\Scripts\CustomValidate\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
@@ -42,12 +42,8 @@
     <Compile Include="Ajax\Admin\StaffManager\GetStaffById.cs" />
     <Compile Include="Ajax\Admin\StaffManager\SetKeywordForSearch.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="HtmlSupportExtensions.cs" />
+    <Compile Include="Extensions\HtmlSupportExtensions.cs" />
     <Compile Include="Library\Ajax\Ajax.cs" />
-    <Compile Include="Ajax\Admin\BankingTransaction.cs" />
-    <Compile Include="Ajax\Home\Find.cs" />
-    <Compile Include="Ajax\Home\GetList.cs" />
-    <Compile Include="Ajax\Home\GetUserInfo.cs" />
     <Compile Include="Library\Attributes\TestedAttribute.cs" />
     <Compile Include="Library\Browser\Data.cs" />
     <Compile Include="Library\Browser\Dialog.cs" />
@@ -63,18 +59,14 @@
     <Compile Include="Model\Common\Identifier.cs" />
     <Compile Include="Model\Database\User.cs" />
     <Compile Include="Model\View\StaffManagerModelView.cs" />
-    <Compile Include="Modules\Module1\Ajax\GetUserInfoAjax.cs" />
-    <Compile Include="Modules\Module1\Class1.cs" />
-    <Compile Include="Modules\Module1\ExampleFunc.cs" />
-    <Compile Include="Modules\Module1\getUserInfo_class.cs" />
     <Compile Include="Modules\StaffManager\Functions\AddEventHandler.cs" />
-    <Compile Include="Modules\StaffManager\Classes\EditStaffDialog.cs" />
+    <Compile Include="Modules\StaffManager\Classes\EditStaffDialog_class.cs" />
     <Compile Include="Modules\StaffManager\Functions\ShowDialogEditStaffById.cs" />
     <Compile Include="Modules\StaffManager\Functions\SetSearchKeyword.cs" />
-    <Compile Include="Modules\StaffManager\StaffManager_class.cs" />
+    <Compile Include="Modules\StaffManager\Classes\StaffManager_class.cs" />
     <Compile Include="Modules\StaffManager\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectorExtensions.cs" />
+    <Compile Include="Extensions\SelectorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bridge.json" />

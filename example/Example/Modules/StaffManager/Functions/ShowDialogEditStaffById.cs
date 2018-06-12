@@ -28,15 +28,9 @@ namespace Modules.StaffManager.Functions
             this.Id = Id;
         }
 
-        public override void VariablesInit()
-        {
-
-        }
-
         public override void Execute()
         {
-            VariablesInit();
-            ajaxRequest();
+               ajaxRequest();
         }
 
         public virtual void ajaxRequest()
@@ -64,7 +58,7 @@ namespace Modules.StaffManager.Functions
         private void data_ok(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
         {
             var model = data.As<Model.View.StaffManagerModelView>();
-            var editDialog = new EditStaffDialog();
+            var editDialog = new EditStaffDialog_class();
             editDialog.model = model;
             editDialog.SetTitle("Cập nhật thông tin nhân viên");
             editDialog.SetAction("Cập nhật");
