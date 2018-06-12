@@ -15,8 +15,14 @@ namespace Library
         /// </summary>
         public virtual void Execute()
         {
-            
+            // Application logic here
         }
-       
+
+        /// <summary>
+        /// Khởi tạo các biến
+        /// </summary>
+        public virtual void VariablesInit()
+        {
+        }
     }
 }
