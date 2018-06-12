@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Http;
+using Library.Browser;
+
 namespace Library
 {
     public partial class Ajax
@@ -114,9 +116,12 @@ namespace Library
         {
             // Request không có data
             if (data == null)
-                data = new object().ToDynamic();
-
-
+            {
+                JSON.stringify("cường");
+                JSON.parse("{}");
+                data = new { }.As<dynamic>(); // object json string
+                data = Bridge.Script.Call<dynamic>("JSON.parse", data);
+            }
             switch (Method)
             {
                 case HttpMethod.GET:

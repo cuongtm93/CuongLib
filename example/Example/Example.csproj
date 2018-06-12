@@ -47,6 +47,8 @@
     <Compile Include="Library\Attributes\TestedAttribute.cs" />
     <Compile Include="Library\Browser\Data.cs" />
     <Compile Include="Library\Browser\Dialog.cs" />
+    <Compile Include="Library\External\console.cs" />
+    <Compile Include="Library\External\Json.cs" />
     <Compile Include="Library\Dependecies\DI.cs" />
     <Compile Include="Library\Dependecies\EnsureLibrariesInstalledCorrectly_func.cs" />
     <Compile Include="Library\Http\HttpMethod.cs" />
