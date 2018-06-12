@@ -14,14 +14,20 @@ namespace Library.Browser
     /// </summary>
     public class Dialog : Data
     {
+        /// <summary>
+        /// DialogId trên trình duyệt
+        /// </summary>
         public string dialogId;
 
-        public string Title = "";
+        /// <summary>
+        ///  Tiêu đề của dialog
+        /// </summary>
+        public string Title;
 
         /// <summary>
-        /// Cho phép hiển thị dialog khi khởi tạo class này
+        /// 
         /// </summary>
-        /// <param name="_dialogId"></param>
+        /// <param name="_dialogId">Cho phép hiển thị dialog khi khi _dialogId khác rỗng</param>
         /// 
         [Tested]
         public Dialog(string _dialogId = "")
@@ -38,7 +44,7 @@ namespace Library.Browser
         /// </summary>
         /// <param name="CreateddialogId"></param>
         [Tested]
-        public virtual void CreateModalDialog(string CreateddialogId="")
+        public virtual void CreateModalDialog(string CreateddialogId = "")
         {
             if (!string.IsNullOrWhiteSpace(CreateddialogId))
             {
@@ -83,11 +89,11 @@ namespace Library.Browser
         {
             return $"{this.dialogId}_{Name}";
         }
-        
+
         /// <summary>
-        ///  Trả về đối tượng $("#parent_Name");
+        ///  Trả về đối tượng $("#dialogId_Name")
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="Name">Id của control trong dialog</param>
         /// <returns></returns>
         public virtual dynamic GetChild(string Name)
         {

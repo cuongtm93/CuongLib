@@ -16,9 +16,17 @@ namespace Modules.StaffManager
 
         public override void Execute()
         {
-            Console.WriteLine("Module StaffManger đã khởi động");
-            var StaffManager_class = new Modules.StaffManager.StaffManager_class();
-            StaffManager_class.AddEventHandler_func.Execute();
+            try
+            {
+                var StaffManager_class = new StaffManager_class();
+                StaffManager_class.AddEventHandler_func.Execute();
+                Console.WriteLine("Module StaffManger đã khởi động");
+            }
+            catch
+            {
+                Console.Write("Lỗi xảy ra khi khởi động StaffManager");
+            }
+            
         }
     }
 }
