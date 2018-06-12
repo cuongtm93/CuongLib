@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using Retyped;
 using Library;
 using Ajax.Admin;
+using Library.Attributes;
+
 namespace Modules.StaffManager.Functions
 {
     public class AddEventHandler : Function
     {
         #region "class"
 
-        //private StaffManager_class _class = new StaffManager_class();
-        private Library.Browser.Data _data = new Library.Browser.Data();
+        private Library.Browser.Data _data;
         #endregion
 
         #region "var"
@@ -24,24 +25,33 @@ namespace Modules.StaffManager.Functions
 
         #endregion
 
+        public AddEventHandler()
+        {
+            _data = new Library.Browser.Data();
+        }
         public override void Execute()
         {
-            base.Execute();
+            VariablesInit();
 
             SetEventHandler();
         }
+
+        [Tested]
         public override void VariablesInit()
         {
             btnSearch = _data.getElementById<dom.HTMLButtonElement>("btnSearch");
         }
+
+        [Tested]
         public virtual void SetEventHandler()
         {
             btnSearch.onclick += btnSearchOnClick;
         }
 
+
+        [Tested]
         public virtual void btnSearchOnClick(dom.MouseEvent ev)
         {
-            //_class.SetSearchKeyword_func.Execute();
             Console.Write("Sự kiện btnSearch Click");
             new Functions.SetSearchKeyword().Execute();
         }

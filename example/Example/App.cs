@@ -2,6 +2,7 @@
 using Library.Dependecies;
 using Library;
 using Retyped;
+using Modules;
 namespace Esms
 {
     public class App
@@ -9,7 +10,7 @@ namespace Esms
 
         public static void Main()
         {
-            
+
         }
 
         public static void TestFunc()
@@ -20,12 +21,6 @@ namespace Esms
             var F = F2.As<Function>();
 
             F.Execute();
-        }
-        public static void StaffManager()
-        {
-            var StaffManager = new Modules.StaffManager.StaffManager_class();
-
-            StaffManager.AddEventHandler_func.Execute();
         }
     }
 }

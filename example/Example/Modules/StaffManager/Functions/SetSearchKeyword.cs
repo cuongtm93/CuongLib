@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Retyped;
 using Library;
 using Ajax.Admin;
+using Library.Attributes;
+
 namespace Modules.StaffManager.Functions
 {
     /// <summary>
@@ -15,7 +17,7 @@ namespace Modules.StaffManager.Functions
     {
         #region "class"
 
-        private Library.Browser.Data _data;
+        
 
         #endregion
 
@@ -25,14 +27,15 @@ namespace Modules.StaffManager.Functions
         public string keyword;
         #endregion
 
-        public SetSearchKeyword()
+        public SetSearchKeyword() : base()
         {
-            _data = new Library.Browser.Data();
+            
         }
 
+        [Tested]
         public override void VariablesInit()
         {
-            keyword = _data.getValueById<string>("Email");
+            keyword = data.getValueById<string>("Email");
         }
 
         public override void Execute()
@@ -44,6 +47,8 @@ namespace Modules.StaffManager.Functions
         /// <summary>
         /// 
         /// </summary>
+        /// 
+        [Tested]
         public virtual void ajaxRequest()
         {
             ajax = new SetKeywordForSearch()
@@ -77,11 +82,13 @@ namespace Modules.StaffManager.Functions
         /// <param name="data"></param>
         /// <param name="textStatus"></param>
         /// <param name="jqXHR"></param>
+        /// 
+        [Tested]
         private void setSearchKeyword_ok(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
         {
-            var KendoGrid = _data.getKendoGrid("grid");
+            var KendoGrid = this.data.getKendoGrid("grid");
 
-            _data.kendGridReloadData(KendoGrid);
+            this.data.kendGridReloadData(KendoGrid);
         }
 
     }

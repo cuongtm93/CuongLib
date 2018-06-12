@@ -9,13 +9,18 @@ namespace Library
 {
     public class Function : IVoid
     {
+        #region injections
+
+        public Library.Browser.Data data;
+
+        #endregion
 
         /// <summary>
         ///  Gọi hàm này để thực thi một function class
         /// </summary>
         public virtual void Execute()
         {
-            // Application logic here
+            // Hàm này sẽ được định nghĩa lại trong từng Function
         }
 
         /// <summary>
@@ -23,6 +28,13 @@ namespace Library
         /// </summary>
         public virtual void VariablesInit()
         {
+            // Hàm này sẽ được định nghĩa lại trong từng Function
+        }
+
+        public Function()
+        {
+            // Khởi tạo các thư viện hỗ trợ cho Function
+            data = new Library.Browser.Data();
         }
     }
 }

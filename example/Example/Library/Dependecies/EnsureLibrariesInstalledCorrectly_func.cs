@@ -8,7 +8,7 @@ namespace Library.Dependecies
     class EnsureLibrariesInstalledCorrectly_func : Library.Function
     {
         public List<string> dependencies;
-        public EnsureLibrariesInstalledCorrectly_func()
+        public EnsureLibrariesInstalledCorrectly_func() : base()
         {
             PrepareDependenciesList();
         }
