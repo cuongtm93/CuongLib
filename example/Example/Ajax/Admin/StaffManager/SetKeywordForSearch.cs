@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using Retyped;
-using Library.Http;
+using Kernel.Http;
 
 namespace Ajax.Admin
 {
-    public class SetKeywordForSearch : Library.Ajax
+    public class SetKeywordForSearch : Kernel.Ajax
     {
         public SetKeywordForSearch()
         {

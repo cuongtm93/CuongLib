@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Example")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("eSMS Javascript Libary")]
+[assembly: AssemblyDescription("Thư viện javascript cho ứng dụng eSMS")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Example")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCompany("ViHAT")]
+[assembly: AssemblyProduct("eSMS javascript Library")]
+[assembly: AssemblyCopyright("Copyright ©  cuongtm93  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

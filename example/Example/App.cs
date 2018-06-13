@@ -1,11 +1,12 @@
 ﻿using System;
-using Library.Dependecies;
-using Library;
+using Kernel.Dependecies;
+using Kernel;
 using Retyped;
 using Modules;
 using System.Threading.Tasks;
 using Bridge.Html5;
 using Bridge;
+using Kernel.Http;
 
 namespace Esms
 {
@@ -22,13 +23,34 @@ namespace Esms
         {
 
         }
+        public async void btnClickEvent()
+        {
+            var getu = new Kernel.Ajax();
+            getu.Method = HttpMethod.GET;
+            getu.Url = "/home/getuserinfo";
+            getu.data = "";
+            getu.success = _s;
+            getu.error = _e;
+            getu.Request();
+        }
+
+        private void _e(jquery.JQuery.jqXHR<object> jqXHR, jquery.JQuery.Ajax.ErrorTextStatus textStatus, string errorThrown)
+        {
+            dom.alert("chans qua");
+        }
+
+        private void _s(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
+        {
+            Javascript.debugger();
+            dom.alert("ok");
+        }
 
         public static void TestFunc()
         {
             var F1 = new EnsureLibrariesInstalledCorrectly_func();
             var F2 = new DI();
 
-            var F = F2.As<Library.Function>();
+            var F = F2.As<Kernel.Function>();
 
             F.Execute();
         }

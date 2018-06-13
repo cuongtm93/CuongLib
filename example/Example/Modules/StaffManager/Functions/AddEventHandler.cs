@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Retyped;
-using Library;
+using Kernel;
 using Ajax.Admin;
-using Library.Attributes;
+using Kernel.Attributes;
 
 namespace Modules.StaffManager.Functions
 {
@@ -14,7 +14,7 @@ namespace Modules.StaffManager.Functions
     {
         #region "class"
 
-        private Library.Browser.Data _data;
+        private Kernel.Browser.Data _data;
         #endregion
 
         #region "var"
@@ -27,7 +27,7 @@ namespace Modules.StaffManager.Functions
 
         public AddEventHandler()
         {
-            _data = new Library.Browser.Data();
+            _data = new Kernel.Browser.Data();
         }
         public override void Execute()
         {

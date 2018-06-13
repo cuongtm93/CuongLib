@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Retyped;
-using Library.Http;
+using Kernel.Http;
 using Model.Common;
 
 namespace Ajax.Admin
 {
     
-    public class GetStaffById : Library.Ajax
+    public class GetStaffById : Kernel.Ajax
     {
 
         // Định nghĩa lại kiểu dữ liệu cho ajax GetStaffById ;

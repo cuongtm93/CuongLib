@@ -1,5 +1,5 @@
-﻿using Library;
-using Library.Browser;
+﻿using Kernel;
+using Kernel.Browser;
 using Model.View;
 using System;
 using System.Collections.Generic;
