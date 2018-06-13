@@ -14,6 +14,7 @@ namespace Kernel
     public partial class AjaxTask : Ajax
     {
 
+        public bool requestError { get; set; }
         /// <summary>
         /// Thời gian chờ dữ liệu tối đa, tính bằng mili giây
         /// </summary>
@@ -27,7 +28,7 @@ namespace Kernel
         }
 
         [Tested]
-        public async Task<string> GetResult()
+        public async Task<dynamic> Execute()
         {
             PrepareAjaxOptions();
             var Ajax = jquery.jQuery.ajax(new jquery.JQuery.AjaxSettings<object>
@@ -42,16 +43,18 @@ namespace Kernel
 
             // Chờ khi thực hiện xong ajax thì trả về chuỗi thông báo
             await Task.WhenAll(Ajax);
-            return "completed";
+            return AjaxResult;
 
         }
         private void _errorTask(jquery.JQuery.jqXHR<object> jqXHR, jquery.JQuery.Ajax.ErrorTextStatus textStatus, string errorThrown)
         {
+            requestError = true;
         }
 
         [Tested]
         private void _sucessTask(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
         {
+            requestError = false;
             AjaxResult = data;
         }
     }
