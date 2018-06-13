@@ -10,11 +10,11 @@ public static class support
 {
     public static void clearInnerHtml(this dom.HTMLElement element)
     {
-      
+
         element.innerHTML = string.Empty;
     }
 
-    public static void plusText( this dom.HTMLElement element,string text)
+    public static void plusText(this dom.HTMLElement element, string text)
     {
         if (!element.isConnected)
             dom.alert("Không thể thực hiện hành động này");

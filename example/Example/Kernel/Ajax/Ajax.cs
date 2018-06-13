@@ -46,7 +46,6 @@ namespace Kernel
         ///  : Kiểm tra kiểu dữ liệu trước khi gửi ajax.
         /// Nếu nó bằng null thì không kiểm tra. 
         /// </summary>
-        public Type ValidDataType;
 
         private bool _isValidRequest = true;
         public Ajax()
@@ -68,7 +67,7 @@ namespace Kernel
         /// </summary>
         public virtual void Request()
         {
-            //ValidateRequest();
+            ValidateRequest();
             PrepareAjaxOptions();
             Javascript.debugger();
             if (_isValidRequest)
@@ -87,10 +86,6 @@ namespace Kernel
         {
             _isValidRequest = !string.IsNullOrWhiteSpace(Url);
 
-            if (ValidDataType != null)
-            {
-                _isValidRequest &= data.GetType() == ValidDataType;
-            }
             if (!_isValidRequest)
                 ShowMessageForNotValidRequest();
         }
@@ -120,32 +115,27 @@ namespace Kernel
             {
                 data = new { }.As<dynamic>(); // object json string
             }
-            switch (Method)
+
+            switch (data.GetType().Name)
             {
-                case HttpMethod.GET:
-
-                    string datatype = Javascript.@typeof(data);
-                    switch (datatype)
-                    {
-                        case "string":
-                        // đúng chuẩn rồi
-                        case "object":
-                            data = jquery.jQuery.param(data.As<dynamic>());
-                            break;
-                        default:
-                            // class
-                            var JsonData = data.As<dynamic>().toJSON();
-                            data = jquery.jQuery.param(JsonData);
-                            break;
-                    }
+                case "String":
+                    // đã test
+                    // truyền trực tiếp data vào url
+                    Url += data;
+                    data = new { }.ToDynamic();
                     break;
-                case HttpMethod.POST:
-
-                    data = data.As<dynamic>().toJSON();
+                case "Object" when Method == HttpMethod.GET  :
+                    // đã test
+                    // chính là json
+                    data = jquery.jQuery.param(data.As<dynamic>());
                     break;
-
-                default:
-                    ShowNotSupportMethod();
+                case "Object" when Method == HttpMethod.POST:
+                    // khi post thì dữ liệu kiểu json
+                    break;
+                default :
+                    // đã test
+                    // Kiểu dữ liệu model
+                    data = jquery.jQuery.param(data.As<dynamic>().toJSON());
                     break;
             }
         }

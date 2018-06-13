@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Bridge.Html5;
 using Bridge;
 using Kernel.Http;
+using Bridge.jQuery2;
 
 namespace Esms
 {
@@ -21,28 +22,44 @@ namespace Esms
         [Ready]
         public static void Main()
         {
-
+            btnClickEvent();
+            //jQuery.Ajax(new AjaxOptions()
+            //{
+            //    Url = "/home/testget",
+            //    Cache = false,
+            //    Success = delegate (object data, string str, jqXHR jqXHR)
+            //    {
+            //        dom.alert("PL");
+            //    }
+            //});
         }
-        public async void btnClickEvent()
+        public static void btnClickEvent()
         {
             var getu = new Kernel.Ajax();
-            getu.Method = HttpMethod.GET;
-            getu.Url = "/home/getuserinfo";
-            getu.data = "";
+            getu.Async = true;
+
+            getu.Method = HttpMethod.POST;
+            getu.Url = "/home/testpost";
+            getu.data = new Model.View.User()
+            {
+                Id = 3,
+                Name = "ab"
+            }.ToDynamic();
             getu.success = _s;
             getu.error = _e;
             getu.Request();
         }
 
-        private void _e(jquery.JQuery.jqXHR<object> jqXHR, jquery.JQuery.Ajax.ErrorTextStatus textStatus, string errorThrown)
-        {
-            dom.alert("chans qua");
-        }
-
-        private void _s(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
+        private static void _e(jquery.JQuery.jqXHR<object> jqXHR, jquery.JQuery.Ajax.ErrorTextStatus textStatus, string errorThrown)
         {
             Javascript.debugger();
-            dom.alert("ok");
+            //dom.alert("e");
+        }
+
+        private static void _s(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
+        {
+
+            dom.alert(data.ToDynamic().id);
         }
 
         public static void TestFunc()
