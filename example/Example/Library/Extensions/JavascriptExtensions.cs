@@ -17,9 +17,15 @@ public static class Javascript
         
     }
 
-    [Template("typeof({variable}")]
+    /// <summary>
+    ///  Sử dụng var x = Javascript.@typeof(var);
+    /// </summary>
+    /// <param name="variable"></param>
+    /// <returns> Trả về chuỗi chứa kiểu của biến </returns>
+    [Template("typeof({variable})")]
     public static string @typeof(dynamic variable)
     {
+        // dòng lệnh này chỉ là để cho hàm @typeof là hợp lệ
         return string.Empty;
     }
 }
