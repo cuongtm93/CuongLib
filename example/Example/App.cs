@@ -22,19 +22,38 @@ namespace Esms
         [Ready]
         public static void Main()
         {
-            dom.document.getElementById("targetbtn").onclick += targetbtn_click;
+            dom.document.getElementById("targetbtn").onclick = targetbtn_clickAsync;
         }
-        private async static void targetbtn_click(dom.MouseEvent ev)
+
+        private static async void targetbtn_clickAsync(dom.MouseEvent ev)
         {
-            dom.alert("Chajy");
-            var t = new AjaxTask();
-            t.Url = "http://localhost:52084/home/TestGet";
-            t.Method = HttpMethod.GET;
-            t.data = new { }.ToDynamic();
-            await t.GetResult();
-            var message = t.AjaxResult.As<dynamic>();
-            dom.alert(message.id);
+            dynamic messageget, messagepost;
+
+
+            // ajax thứ nhất
+            var GetTest = new AjaxTask
+            {
+                Url = "http://localhost:52084/home/TestGet",
+                Method = HttpMethod.GET,
+                data = new { }.ToDynamic()
+            };
+            await GetTest.GetResult();
+            messageget = GetTest.AjaxResult.As<dynamic>();
+            dom.document.getElementById("targetbtn").innerHTML += ("get" + messageget.id);
+
+
+            // ajax thứ 2
+            var PostTest = new AjaxTask
+            {
+                Url = "http://localhost:52084/home/TestPost",
+                Method = HttpMethod.POST,
+                data = new { }.ToDynamic()
+            };
+            await PostTest.GetResult();
+            messagepost = PostTest.AjaxResult.As<dynamic>();
+            dom.document.getElementById("targetbtn").innerHTML += ("post " + messagepost.id);
+
         }
-      
+
     }
 }

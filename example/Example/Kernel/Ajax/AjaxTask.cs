@@ -30,7 +30,7 @@ namespace Kernel
         public async Task<string> GetResult()
         {
             PrepareAjaxOptions();
-            await jquery.jQuery.ajax(new jquery.JQuery.AjaxSettings<object>
+            var Ajax = jquery.jQuery.ajax(new jquery.JQuery.AjaxSettings<object>
             {
                 data = data,
                 async = Async,
@@ -39,6 +39,9 @@ namespace Kernel
                 success = _sucessTask,
                 error = _errorTask
             }).ToTask();
+
+            // Chờ khi thực hiện xong ajax thì trả về chuỗi thông báo
+            await Task.WhenAll(Ajax);
             return "completed";
 
         }
