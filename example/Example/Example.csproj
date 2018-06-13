@@ -42,11 +42,12 @@
     <Compile Include="Ajax\Admin\StaffManager\GetStaffById.cs" />
     <Compile Include="Ajax\Admin\StaffManager\SetKeywordForSearch.cs" />
     <Compile Include="App.cs" />
-    <Compile Include="Extensions\HtmlSupportExtensions.cs" />
+    <Compile Include="Library\Extensions\HtmlSupportExtensions.cs" />
     <Compile Include="Library\Ajax\Ajax.cs" />
     <Compile Include="Library\Attributes\TestedAttribute.cs" />
     <Compile Include="Library\Browser\Data.cs" />
     <Compile Include="Library\Browser\Dialog.cs" />
+    <Compile Include="Library\Extensions\JavascriptExtensions.cs" />
     <Compile Include="Library\External\console.cs" />
     <Compile Include="Library\External\Json.cs" />
     <Compile Include="Library\Dependecies\DI.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Modules\StaffManager\Classes\StaffManager_class.cs" />
     <Compile Include="Modules\StaffManager\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extensions\SelectorExtensions.cs" />
+    <Compile Include="Library\Extensions\SelectorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bridge.json" />

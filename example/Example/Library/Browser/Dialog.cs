@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Retyped;
 using Library.Attributes;
-
 namespace Library.Browser
 {
 
@@ -87,6 +86,7 @@ namespace Library.Browser
 
         public virtual string GetChildId(string Name)
         {
+            
             return $"{this.dialogId}_{Name}";
         }
 
