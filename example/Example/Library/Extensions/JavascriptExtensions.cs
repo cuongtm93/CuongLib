@@ -16,5 +16,11 @@ public static class Javascript
     {
         
     }
+
+    [Template("typeof({variable}")]
+    public static string @typeof(dynamic variable)
+    {
+        return string.Empty;
+    }
 }
 
