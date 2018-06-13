@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Kernel.Http;
 using Kernel.Browser;
+using Kernel.Attributes;
 
 namespace Kernel
 {
+    [Tested]
     public partial class Ajax
     {
         /// <summary>
@@ -16,6 +18,7 @@ namespace Kernel
         /// </summary>
         public virtual jquery.JQuery.Ajax.SuccessCallback<object> success { get; set; }
 
+        public jquery.JQuery.jqXHR<object> request;
         /// <summary>
         ///  Hàm sẽ gọi khi thực gọi ajax thất bại
         /// </summary>
@@ -65,13 +68,15 @@ namespace Kernel
         /// <summary>
         ///  Gọi ajax
         /// </summary>
+        /// 
+        [Tested]
         public virtual void Request()
         {
             ValidateRequest();
             PrepareAjaxOptions();
             Javascript.debugger();
             if (_isValidRequest)
-                jquery.jQuery.ajax(new jquery.JQuery.AjaxSettings<object>
+                request = jquery.jQuery.ajax(new jquery.JQuery.AjaxSettings<object>
                 {
                     data = data,
                     async = Async,
@@ -82,6 +87,7 @@ namespace Kernel
                 });
         }
 
+        [Tested]
         public virtual void ValidateRequest()
         {
             _isValidRequest = !string.IsNullOrWhiteSpace(Url);
@@ -90,6 +96,7 @@ namespace Kernel
                 ShowMessageForNotValidRequest();
         }
 
+        [Tested]
         public virtual void ShowMessageForNotValidRequest()
         {
             dom.alert("Request không hợp lệ");
@@ -107,6 +114,8 @@ namespace Kernel
         {
             Console.WriteLine("Hiện tại thư viện chưa hỗ trợ phương thức này");
         }
+
+        [Tested]
         public virtual void PrepareAjaxOptions()
         {
             Javascript.debugger();

@@ -6,11 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using Kernel.Http;
 using Kernel.Browser;
+using Kernel.Attributes;
 
 namespace Kernel
 {
+    [Tested]
     public partial class AjaxTask : Ajax
     {
+
+        /// <summary>
+        /// Thời gian chờ dữ liệu tối đa, tính bằng mili giây
+        /// </summary>
+        public int TimeCanWait { get; set; }
         public object AjaxResult { get; set; }
         public AjaxTask()
         {
@@ -19,27 +26,29 @@ namespace Kernel
             error = _errorTask;
         }
 
-        public Task<string> GetResult()
+        [Tested]
+        public async Task<string> GetResult()
         {
-            return Task.Run(() =>
+            PrepareAjaxOptions();
+            await jquery.jQuery.ajax(new jquery.JQuery.AjaxSettings<object>
             {
+                data = data,
+                async = Async,
+                method = Method,
+                url = Url,
+                success = _sucessTask,
+                error = _errorTask
+            }).ToTask();
+            return "completed";
 
-                this.Request();
-                return "running";
-            });
         }
         private void _errorTask(jquery.JQuery.jqXHR<object> jqXHR, jquery.JQuery.Ajax.ErrorTextStatus textStatus, string errorThrown)
         {
-            Javascript.debugger();
-            dom.alert("Lỗi mất tiêu");
-            // Lỗi xảy ra
-            AjaxResult = "Lỗi";
         }
 
+        [Tested]
         private void _sucessTask(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
         {
-            Javascript.debugger();
-            Console.Write(data);
             AjaxResult = data;
         }
     }

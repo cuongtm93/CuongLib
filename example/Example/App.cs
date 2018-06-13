@@ -22,7 +22,19 @@ namespace Esms
         [Ready]
         public static void Main()
         {
-
+            dom.document.getElementById("targetbtn").onclick += targetbtn_click;
         }
+        private async static void targetbtn_click(dom.MouseEvent ev)
+        {
+            dom.alert("Chajy");
+            var t = new AjaxTask();
+            t.Url = "http://localhost:52084/home/TestGet";
+            t.Method = HttpMethod.GET;
+            t.data = new { }.ToDynamic();
+            await t.GetResult();
+            var message = t.AjaxResult.As<dynamic>();
+            dom.alert(message.id);
+        }
+      
     }
 }
