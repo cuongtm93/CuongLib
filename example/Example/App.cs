@@ -22,14 +22,11 @@ namespace Esms
         [Ready]
         public static void Main()
         {
-            dom.document.getElementById("targetbtn").onclick = targetbtn_clickAsync;
+            dom.document.getElementById("targetbtn").onclick = Targetbtn_clickAsync;
         }
 
-        private static async void targetbtn_clickAsync(dom.MouseEvent ev)
+        private static async void Targetbtn_clickAsync(dom.MouseEvent ev)
         {
-            dynamic messageget, messagepost;
-
-
             // ajax thứ nhất
             var GetTest = new AjaxTask
             {
@@ -37,10 +34,9 @@ namespace Esms
                 Method = HttpMethod.GET,
                 data = new { }.ToDynamic()
             };
-            await GetTest.GetResult();
-            messageget = GetTest.AjaxResult.As<dynamic>();
-            dom.document.getElementById("targetbtn").innerHTML += ("get" + messageget.id);
-
+            dynamic Test1 = await GetTest.Execute();
+            if (!GetTest.requestError)
+                dom.document.getElementById("targetbtn").innerHTML += ("get" + Test1.id);
 
             // ajax thứ 2
             var PostTest = new AjaxTask
@@ -49,10 +45,10 @@ namespace Esms
                 Method = HttpMethod.POST,
                 data = new { }.ToDynamic()
             };
-            await PostTest.GetResult();
-            messagepost = PostTest.AjaxResult.As<dynamic>();
-            dom.document.getElementById("targetbtn").innerHTML += ("post " + messagepost.id);
+            dynamic Test2 = await PostTest.Execute();
 
+            if (!PostTest.requestError)
+                dom.document.getElementById("targetbtn").innerHTML += ("post " + Test2.id);
         }
 
     }
