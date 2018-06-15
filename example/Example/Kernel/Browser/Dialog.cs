@@ -48,13 +48,13 @@ namespace Kernel.Browser
             if (!string.IsNullOrWhiteSpace(CreateddialogId))
             {
                 // Showdialog đã khởi tạo xong
-                select(CreateddialogId.Id()).modal("show");
+                query(CreateddialogId.Id()).modal("show");
             }
             else
             {
                 // Show dialog đang khởi tạo (bằng từ khóa new)
                 FillDialogData();
-                select(this.dialogId.Id()).modal("show");
+                query(this.dialogId.Id()).modal("show");
             }
         }
 
@@ -67,11 +67,11 @@ namespace Kernel.Browser
         {
             if (string.IsNullOrWhiteSpace(dialogId))
             {
-                select(this.dialogId.Id()).modal("hide");
+                query(this.dialogId.Id()).modal("hide");
             }
             else
             {
-                select(dialogId.Id()).modal("hide");
+                query(dialogId.Id()).modal("hide");
             }
         }
 
@@ -97,7 +97,7 @@ namespace Kernel.Browser
         /// <returns></returns>
         public virtual dynamic GetChild(string Name)
         {
-            return select(GetChildId(Name).Id());
+            return query(GetChildId(Name).Id());
         }
 
         public virtual void SetTitle(string Title)

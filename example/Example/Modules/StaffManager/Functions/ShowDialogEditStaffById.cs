@@ -25,6 +25,7 @@ namespace Modules.StaffManager.Functions
 
         public ShowDialogEditStaffById(int Id) : base()
         {
+            
             this.Id = Id;
         }
 
@@ -59,9 +60,8 @@ namespace Modules.StaffManager.Functions
         {
             var model = data.As<Model.View.StaffManagerModelView>();
             var editDialog = new EditStaffDialog_class();
+            EditStaffDialog_class._Id = model.Id;
             editDialog.model = model;
-            editDialog.SetTitle("Cập nhật thông tin nhân viên");
-            editDialog.SetAction("Cập nhật");
             editDialog.CreateModalDialog();
         }
 

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Kernel
 {
-    public class Class
+    public class Class 
     {
-
+       
     }
 }

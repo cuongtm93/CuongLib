@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\AO_NEW_dev\AdvertisingOnline\Scripts\CustomValidate\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
@@ -39,22 +39,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Ajax\Admin\CreateStaff.cs" />
     <Compile Include="Ajax\Admin\StaffManager\GetStaffById.cs" />
     <Compile Include="Ajax\Admin\StaffManager\SetKeywordForSearch.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="demo\class1.cs" />
     <Compile Include="Kernel\Ajax\AjaxTask.cs" />
+    <Compile Include="Kernel\Data\popupNotificationConst.cs" />
     <Compile Include="Kernel\Extensions\HtmlSupportExtensions.cs" />
     <Compile Include="Kernel\Ajax\Ajax.cs" />
     <Compile Include="Kernel\Attributes\TestedAttribute.cs" />
     <Compile Include="Kernel\Browser\Data.cs" />
     <Compile Include="Kernel\Browser\Dialog.cs" />
     <Compile Include="Kernel\Extensions\JavascriptExtensions.cs" />
-    <Compile Include="Kernel\External\console.cs" />
-    <Compile Include="Kernel\External\Json.cs" />
     <Compile Include="Kernel\Dependecies\DI.cs" />
     <Compile Include="Kernel\Dependecies\EnsureLibrariesInstalledCorrectly_func.cs" />
-    <Compile Include="Kernel\External\localStorage.cs" />
     <Compile Include="Kernel\Http\HttpMethod.cs" />
     <Compile Include="Kernel\KendoDatePicker\datePicker.cs" />
     <Compile Include="Kernel\KendoDatePicker\Core\KendoDatePicker.cs" />
@@ -65,9 +63,10 @@
     <Compile Include="Model\Common\Identifier.cs" />
     <Compile Include="Model\Database\User.cs" />
     <Compile Include="Model\View\StaffManagerModelView.cs" />
-    <Compile Include="Model\View\User.cs" />
+    <Compile Include="Modules\StaffManager\Classes\AddStaffDialog.cs" />
     <Compile Include="Modules\StaffManager\Functions\AddEventHandler.cs" />
     <Compile Include="Modules\StaffManager\Classes\EditStaffDialog_class.cs" />
+    <Compile Include="Modules\StaffManager\Functions\Consts.cs" />
     <Compile Include="Modules\StaffManager\Functions\ShowDialogEditStaffById.cs" />
     <Compile Include="Modules\StaffManager\Functions\SetSearchKeyword.cs" />
     <Compile Include="Modules\StaffManager\Classes\StaffManager_class.cs" />
@@ -135,6 +134,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Kernel\External\" />
     <Folder Include="Kernel\Functions\" />
     <Folder Include="Kernel\UI\" />
   </ItemGroup>

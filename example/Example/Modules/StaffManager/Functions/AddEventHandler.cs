@@ -21,7 +21,8 @@ namespace Modules.StaffManager.Functions
 
        
         public SetKeywordForSearch ajax;
-        public dom.HTMLButtonElement btnSearch;
+        public dom.HTMLButtonElement btnSearchStaff;
+        public dom.HTMLButtonElement btnAddStaff;
 
         #endregion
 
@@ -39,20 +40,28 @@ namespace Modules.StaffManager.Functions
         [Tested]
         public override void VariablesInit()
         {
-            btnSearch = _data.getElementById<dom.HTMLButtonElement>("btnSearch");
+            btnSearchStaff = _data.getElementById<dom.HTMLButtonElement>("btnSearchStaff");
+            btnAddStaff = _data.getElementById<dom.HTMLButtonElement>("btnAddStaff");
         }
 
         [Tested]
         public virtual void SetEventHandler()
         {
-            btnSearch.onclick += btnSearchOnClick;
+            btnSearchStaff.onclick += btnSearch_onClick;
+            btnAddStaff.onclick += btnAddStaff_onClick;
         }
 
-
-        [Tested]
-        public virtual void btnSearchOnClick(dom.MouseEvent ev)
+        [EventHandler]
+        private void btnAddStaff_onClick(dom.MouseEvent ev)
         {
-            Console.Write("Sự kiện btnSearch Click");
+            dom.alert("ok");
+        }
+
+        [EventHandler]
+        [Tested]
+        public virtual void btnSearch_onClick(dom.MouseEvent ev)
+        {
+            Console.Write("Sự kiện btnSearchStaff Click");
             new Functions.SetSearchKeyword().Execute();
         }
     }

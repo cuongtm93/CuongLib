@@ -14,4 +14,13 @@ namespace Kernel.Attributes
                 Console.WriteLine(msg);
         }
     }
+
+    public class EventHandlerAttribute : System.Attribute
+    {
+        public EventHandlerAttribute(string msg = "")
+        {
+            if (!string.IsNullOrWhiteSpace(msg))
+                Console.WriteLine(msg);
+        }
+    }
 }

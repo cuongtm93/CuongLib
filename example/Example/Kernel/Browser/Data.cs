@@ -6,13 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Kernel.Http;
 using Kernel.Attributes;
-
 namespace Kernel.Browser
 {
     /// <summary>
     ///  Xử lý dữ liệu trên trình duyệt
     /// </summary>
-    public class Data
+    public class Data : Class
     {
         /// <summary>
         ///  Lấy giá trị của element
@@ -22,7 +21,7 @@ namespace Kernel.Browser
         /// <returns></returns>
         /// 
         [Tested]
-        public T getValueById<T>(string indentifer)
+        public virtual T getValueById<T>(string indentifer)
         {
             return jquery.jQuery.select(indentifer.Id()).val().As<T>();
         }
@@ -35,13 +34,13 @@ namespace Kernel.Browser
         /// <returns></returns>
         /// 
         [Tested]
-        public T getElementById<T>(string indentifer)
+        public virtual T getElementById<T>(string indentifer)
         {
             return jquery.jQuery.select(indentifer.Id()).first()[0].Cast<T>();
         }
 
 
-        public void setValue(string indentifer, string value)
+        public virtual void setValue(string indentifer, string value)
         {
             jquery.jQuery.select(indentifer).val(value);
         }
@@ -53,7 +52,7 @@ namespace Kernel.Browser
         /// <returns></returns>
         /// 
         [Tested]
-        public dynamic getKendoGrid(string indentifer)
+        public virtual dynamic getKendoGrid(string indentifer)
         {
             return jquery.jQuery.select(indentifer.Id()).data("kendoGrid");
         }
@@ -65,7 +64,7 @@ namespace Kernel.Browser
         /// 
 
         [Tested]
-        public void kendGridReloadData(dynamic grid)
+        public virtual void kendGridReloadData(dynamic grid)
         {
             grid.dataSource.read();
         }
@@ -77,10 +76,17 @@ namespace Kernel.Browser
         /// <param name="jquerySelector"></param>
         /// <returns></returns>
         /// 
-        [Tested]
-        public dynamic select(string jquerySelector)
+
+        [EventHandler]
+        public static dynamic query(string jquerySelector)
         {
             return jquery.jQuery.select(jquerySelector).As<dynamic>();
+        }
+
+        public static void ShowMessage(string message, string status="")
+        {
+            var popupNotification = query("#popupNotification").data("kendoNotification");
+            popupNotification.show(message, status);
         }
     }
 }
