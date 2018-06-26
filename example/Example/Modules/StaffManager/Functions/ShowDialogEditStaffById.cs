@@ -25,8 +25,7 @@ namespace Modules.StaffManager.Functions
 
         public ShowDialogEditStaffById(int Id) : base()
         {
-            
-            this.Id = Id;
+             this.Id = Id;
         }
 
         public override void Execute()
@@ -58,9 +57,10 @@ namespace Modules.StaffManager.Functions
 
         private void data_ok(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
         {
-            var model = data.As<Model.View.StaffManagerModelView>();
-            var editDialog = new EditStaffDialog_class();
-            EditStaffDialog_class._Id = model.Id;
+            Javascript.debugger();
+            var model = data.As<AdvertisingOnline.AnonymousModel.StaffManagerModelView>();
+            var editDialog = new EditStaffDialog();
+            EditStaffDialog._Id = model.Id;
             editDialog.model = model;
             editDialog.CreateModalDialog();
         }

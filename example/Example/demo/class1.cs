@@ -1,4 +1,5 @@
-﻿using Kernel;
+﻿using AdvertisingOnline.AnonymousModel;
+using Kernel;
 using Kernel.Http;
 using Retyped;
 using System;
@@ -15,7 +16,7 @@ namespace demo
         public void test2()
         {
             var add = new Modules.StaffManager.AddStaffDialog();
-            add.model = new Model.View.StaffManagerModelView()
+            add.model = new StaffManagerModelView()
             {
                 ChiefName = "C",
                 DailyId = 1,

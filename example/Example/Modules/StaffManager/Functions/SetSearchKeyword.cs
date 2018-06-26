@@ -7,35 +7,37 @@ using Retyped;
 using Kernel;
 using Ajax.Admin;
 using Kernel.Attributes;
+using Model.Common;
+using Kernel.Http;
 
 namespace Modules.StaffManager.Functions
 {
     /// <summary>
-    ///  Gán session keyword để phục vụ cho tìm kiếm
+    ///  Gán session keyword để phục vụ cho tìm kiếm nhân viên theo email
     /// </summary>
     public class SetSearchKeyword : Function
     {
         #region "class"
 
-        
+
 
         #endregion
 
         #region "var"
 
-        public SetKeywordForSearch ajax;
+        public SetKeywordForSearchStaff ajax;
         public string keyword;
         #endregion
 
         public SetSearchKeyword() : base()
         {
-            
+
         }
 
         [Tested]
         public override void VariablesInit()
         {
-            keyword = data.getValueById<string>("Email");
+            keyword = data.getValueById<string>("Email1");
         }
 
         public override void Execute()
@@ -51,12 +53,13 @@ namespace Modules.StaffManager.Functions
         [Tested]
         public virtual void ajaxRequest()
         {
-            ajax = new SetKeywordForSearch()
+            ajax = new SetKeywordForSearchStaff()
             {
+                Method = HttpMethod.POST,
                 Async = true,
-                data = new
+                data = new Search
                 {
-                    keyword = keyword
+                    Keyword = keyword
                 }.ToDynamic()
             };
 
@@ -86,14 +89,9 @@ namespace Modules.StaffManager.Functions
         [Tested]
         private void setSearchKeyword_ok(object data, jquery.JQuery.Ajax.SuccessTextStatus textStatus, jquery.JQuery.jqXHR<object> jqXHR)
         {
-            //dom.alert("Ok");
-            //var try_dialog = new Library.Browser.Dialog("editOrCreateStaff");
-            //System.Threading.Thread.Sleep(3000);
-            //try_dialog.HideModalDialog();
-
             var KendoGrid = this.data.getKendoGrid("grid");
-
             this.data.kendGridReloadData(KendoGrid);
+            this.data.kendGridNavigatePage(KendoGrid, 1, 20);
         }
 
     }

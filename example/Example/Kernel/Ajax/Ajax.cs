@@ -74,7 +74,6 @@ namespace Kernel
         {
             ValidateRequest();
             PrepareAjaxOptions();
-            Javascript.debugger();
             if (_isValidRequest)
                 request = jquery.jQuery.ajax(new jquery.JQuery.AjaxSettings<object>
                 {
@@ -118,7 +117,6 @@ namespace Kernel
         [Tested]
         public virtual void PrepareAjaxOptions()
         {
-            Javascript.debugger();
             // Request không có data
             if (data == null)
             {

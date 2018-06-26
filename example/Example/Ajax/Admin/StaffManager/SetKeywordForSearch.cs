@@ -4,12 +4,11 @@ using Kernel.Http;
 
 namespace Ajax.Admin
 {
-    public class SetKeywordForSearch : Kernel.Ajax
+    public class SetKeywordForSearchStaff : Kernel.Ajax
     {
-        public SetKeywordForSearch()
+        public SetKeywordForSearchStaff()
         {
-            Url = "/Admin/SetKeywordForSearch";
-            Method = HttpMethod.GET;
+            Url = "/Admin/SetKeywordForSearchStaff";
         }
     }
 }

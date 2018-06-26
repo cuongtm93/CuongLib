@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\..\AO_NEW_dev\AdvertisingOnline\AnonymousModel\StaffManagerModelView.cs">
+      <Link>Model\View\StaffManagerModelView.cs</Link>
+    </Compile>
     <Compile Include="Ajax\Admin\StaffManager\GetStaffById.cs" />
     <Compile Include="Ajax\Admin\StaffManager\SetKeywordForSearch.cs" />
     <Compile Include="App.cs" />
@@ -61,11 +64,12 @@
     <Compile Include="Kernel\Others\Function.cs" />
     <Compile Include="Kernel\Others\IFunction.cs" />
     <Compile Include="Model\Common\Identifier.cs" />
+    <Compile Include="Model\Common\Search.cs" />
     <Compile Include="Model\Database\User.cs" />
-    <Compile Include="Model\View\StaffManagerModelView.cs" />
+    <Compile Include="Modules\StaffManager\Classes\AddorEditStaffDialog.cs" />
     <Compile Include="Modules\StaffManager\Classes\AddStaffDialog.cs" />
-    <Compile Include="Modules\StaffManager\Functions\AddEventHandler.cs" />
     <Compile Include="Modules\StaffManager\Classes\EditStaffDialog_class.cs" />
+    <Compile Include="Modules\StaffManager\Functions\AddEventHandler.cs" />
     <Compile Include="Modules\StaffManager\Functions\Consts.cs" />
     <Compile Include="Modules\StaffManager\Functions\ShowDialogEditStaffById.cs" />
     <Compile Include="Modules\StaffManager\Functions\SetSearchKeyword.cs" />
@@ -84,7 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Bridge, Version=17.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Bridge.Core.17.1.0\lib\net40\Bridge.dll</HintPath>
+      <HintPath>..\packages\Bridge.Core.17.1.1\lib\net40\Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Bridge.Bootstrap3, Version=3.15.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bridge.Bootstrap.3.15.0\lib\net40\Bridge.Bootstrap3.dll</HintPath>
@@ -131,7 +135,6 @@
     <Reference Include="Retyped.scripthost, Version=2.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Kernel\External\" />
@@ -139,13 +142,13 @@
     <Folder Include="Kernel\UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Bridge.Min.17.1.0\build\Bridge.Min.targets" Condition="Exists('..\packages\Bridge.Min.17.1.0\build\Bridge.Min.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Bridge.Min.17.1.0\build\Bridge.Min.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Bridge.Min.17.1.0\build\Bridge.Min.targets'))" />
     <Error Condition="!Exists('..\packages\Bridge.Razor.0.2.1\build\Bridge.Razor.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Bridge.Razor.0.2.1\build\Bridge.Razor.targets'))" />
+    <Error Condition="!Exists('..\packages\Bridge.Min.17.1.1\build\Bridge.Min.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Bridge.Min.17.1.1\build\Bridge.Min.targets'))" />
   </Target>
   <Import Project="..\packages\Bridge.Razor.0.2.1\build\Bridge.Razor.targets" Condition="Exists('..\packages\Bridge.Razor.0.2.1\build\Bridge.Razor.targets')" />
+  <Import Project="..\packages\Bridge.Min.17.1.1\build\Bridge.Min.targets" Condition="Exists('..\packages\Bridge.Min.17.1.1\build\Bridge.Min.targets')" />
 </Project>

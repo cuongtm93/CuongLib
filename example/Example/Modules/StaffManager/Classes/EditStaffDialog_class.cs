@@ -1,6 +1,5 @@
 ﻿using Kernel;
 using Kernel.Browser;
-using Model.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,97 +10,72 @@ using Modules.StaffManager.Functions;
 using Kernel.Attributes;
 using Kernel.Http;
 using Kernel.Data;
+using AdvertisingOnline.AnonymousModel;
+
 namespace Modules.StaffManager
 {
 
     /// <summary>
-    ///  Lớp EditStaffDialog
+    ///  Dialog cập nhật thông tin nhân viên, kết thừa dialog AddorEditStaffDialog ( dialog dùng chung )
     /// </summary>
-    public class EditStaffDialog_class : Dialog
+    public class EditStaffDialog : AddorEditStaffDialog
     {
-        public Model.View.StaffManagerModelView model;
 
-        public static string _dialogId = "editOrCreateStaff";
-        public static int _Id;
-        public EditStaffDialog_class()
-        {
-            dialogId = _dialogId;
-        }
-        public virtual void InitDialog()
+        
+
+        /// <summary>
+        ///  Khởi tạo dialog cập nhật thông tin nhân viên
+        /// </summary>
+        public override void InitDialog()
         {
             SetTitle("Cập nhật thông tin nhân viên");
-            SetAction(Consts.dialogActionEdit);
-        }
-        public override void CreateModalDialog(string CreateddialogId = "")
-        {
-            InitDialog();
+            SetAction(Functions.Const.AddorEditDialog.dialogActionEdit);
 
             if (model == null)
                 dom.alert("Chưa điền thông tin vào model");
-
-            AddEventHandler();
-            base.CreateModalDialog(CreateddialogId);
         }
+
         public override void FillDialogData()
         {
-            setValue(GetChildId("name").Id(), model.Name);
-            getElementById<dom.HTMLSelectElement>(GetChildId("position")).value = model.PositionId.ToString();
-            setValue(GetChildId("email").Id(), model.Email);
+            getElementById<dom.HTMLInputElement>("name").value = model.Name;
+            getElementById<dom.HTMLSelectElement>("position").value = model.PositionId.ToString();
+            getElementById<dom.HTMLInputElement>("email").value = model.Email;
+
+            // không cho đổi email;
+            getElementById<dom.HTMLInputElement>("email").readOnly = true;
+
+            getElementById<dom.HTMLInputElement>("skype").value = model.Skype;
+            getElementById<dom.HTMLInputElement>("Email2").value = model.ChiefEmail;
         }
 
-        public virtual void SetAction(string Action)
-        {
-            GetChild("dialogAction").html(Action);
-        }
-
-        public virtual void AddEventHandler()
-        {
-
-            Console.WriteLine("Đang thêm các sự kiện - editOrCreateStaff dialog");
-            GetChild("dialogAction").on("click", This.Get("dialogAction_onClick"));
-
-            query(dialogId.Id()).on("hidden.bs.modal", This.Get("UnbindEvent"));
-        }
-
+        /// <summary>
+        ///  Xử lý sự kiện người dùng ấn vào nút cập nhật
+        /// </summary>
         [EventHandler]
-        public virtual void UnbindEvent()
+        public override async void dialogAction_onClickAsync(dom.MouseEvent evt)
         {
-            Console.WriteLine("Đang hủy các sự kiện - editOrCreateStaff dialog");
-            var dialogAction = query($"{_dialogId}_dialogAction".Id());
-            dialogAction.unbind("click");
-            query(dialogId.Id()).unbind("hidden.bs.modal");
-        }
-
-        [EventHandler]
-        public virtual async void dialogAction_onClick()
-        {
-            Javascript.debugger();
-            // this bây giờ là button dialogAction rồi !!! 
-            var dialogAction = this.As<dom.HTMLButtonElement>();
-            var @this = new EditStaffDialog_class();
-
             Console.WriteLine("Người dùng ấn Cập nhật - editOrCreateStaff dialog");
-            Javascript.debugger();
-            var name = @this.getValueById<string>(@this.GetChildId("name"));
-            var email = @this.getValueById<string>(@this.GetChildId("email"));
-            var positionId = @this.getValueById<int>(@this.GetChildId("position"));
             var confirmed = dom.confirm("Bạn có thưc sự muốn cập nhật ? ");
+            GetUserInputs();
 
-            if (confirmed)
+            if (confirmed && InputOk())
             {
                 var updateSale = new AjaxTask()
                 {
                     Async = true,
                     Url = "/Admin/UpdateStaff",
                     Method = HttpMethod.POST,
-                    data = new Model.View.StaffManagerModelView
+                    data = new StaffManagerModelView
                     {
                         Id = _Id,
-                        Email = email,
-                        PositionId = positionId,
-                        Name = name
+                        Email = edit_email,
+                        PositionId = edit_positionid,
+                        Name = edit_name,
+                        Skype = edit_skype,
+                        ChiefEmail = edit_chief_email
                     }.As<dynamic>()
                 };
+
                 var result = await updateSale.Execute();
                 if (updateSale.requestError)
                     dom.alert("Lỗi ajax");
@@ -109,7 +83,7 @@ namespace Modules.StaffManager
                 {
                     if (result.status == popupNotificationConst.Sucess)
                     {
-                        @this.kendGridReloadData(@this.getKendoGrid("grid"));
+                        kendGridReloadData(getKendoGrid("grid"));
                         ShowMessage("Cập nhật thành công", popupNotificationConst.Sucess);
                     }
                     else
@@ -118,6 +92,16 @@ namespace Modules.StaffManager
                     }
                 }
             }
+        }
+        public override void dialog_close(dom.MouseEvent ev)
+        {
+            base.dialog_close(ev);
+            getElementById<dom.HTMLInputElement>("name").onfocus = null;
+
+        }
+        public override bool InputOk()
+        {
+            return true;
         }
     }
 }

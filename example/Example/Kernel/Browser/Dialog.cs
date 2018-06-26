@@ -83,26 +83,11 @@ namespace Kernel.Browser
         {
             // Với từng dialog cụ thể thì hàm này sẽ được định nghĩa lại
         }
-
-        public virtual string GetChildId(string Name)
-        {
-            
-            return $"{this.dialogId}_{Name}";
-        }
-
-        /// <summary>
-        ///  Trả về đối tượng $("#dialogId_Name")
-        /// </summary>
-        /// <param name="Name">Id của control trong dialog</param>
-        /// <returns></returns>
-        public virtual dynamic GetChild(string Name)
-        {
-            return query(GetChildId(Name).Id());
-        }
+                       
 
         public virtual void SetTitle(string Title)
         {
-            GetChild("DialogTitle").html(Title);
+            dom.document.getElementById("dialogtitle").innerHTML = Title;
         }
 
     }

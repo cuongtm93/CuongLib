@@ -23,7 +23,7 @@ namespace Kernel.Browser
         [Tested]
         public virtual T getValueById<T>(string indentifer)
         {
-            return jquery.jQuery.select(indentifer.Id()).val().As<T>();
+            return dom.document.getElementById(indentifer).As<dom.HTMLInputElement>().value.As<T>();
         }
 
         /// <summary>
@@ -36,13 +36,13 @@ namespace Kernel.Browser
         [Tested]
         public virtual T getElementById<T>(string indentifer)
         {
-            return jquery.jQuery.select(indentifer.Id()).first()[0].Cast<T>();
+            return dom.document.getElementById(indentifer).As<T>();
         }
 
 
         public virtual void setValue(string indentifer, string value)
         {
-            jquery.jQuery.select(indentifer).val(value);
+            dom.document.getElementById(indentifer).As<dom.HTMLInputElement>().value = value;
         }
 
         /// <summary>
@@ -67,9 +67,24 @@ namespace Kernel.Browser
         public virtual void kendGridReloadData(dynamic grid)
         {
             grid.dataSource.read();
+
         }
 
+        /// <summary>
+        ///  Chuyển  kendo grid {grid} về trang {page} với page size là {pagesize}
+        /// </summary>
+        /// <param name="grid"></param>
+        [Tested]
+        public virtual void kendGridNavigatePage(dynamic grid, int page = 1, int pagesize = 20)
+        {
+            var navigate_page = new
+            {
+                page = page,
+                pageSize = pagesize
+            };
 
+            grid.dataSource.query(navigate_page);
+        }
         /// <summary>
         ///  Jquery selector
         /// </summary>
@@ -83,7 +98,7 @@ namespace Kernel.Browser
             return jquery.jQuery.select(jquerySelector).As<dynamic>();
         }
 
-        public static void ShowMessage(string message, string status="")
+        public static void ShowMessage(string message, string status = "")
         {
             var popupNotification = query("#popupNotification").data("kendoNotification");
             popupNotification.show(message, status);
