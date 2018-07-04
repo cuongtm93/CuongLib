@@ -12,7 +12,7 @@ using Kernel.Attributes;
 using Kernel.Http;
 using Kernel.Data;
 using Modules.StaffManager.Functions.Const;
-
+using static Retyped.dom;
 namespace Modules.StaffManager
 {
     public class AddorEditStaffDialog : Dialog
@@ -31,7 +31,6 @@ namespace Modules.StaffManager
         public static int _Id;
         public AddorEditStaffDialog()
         {
-            Javascript.debugger();
             dialogId = _dialogId;
         }
 
@@ -72,7 +71,7 @@ namespace Modules.StaffManager
         /// <param name="Action"> Tiêu đề của nút bấm </param>
         public virtual void SetAction(string Action)
         {
-            dom.document.getElementById("dialogAction").innerHTML=(Action);
+            document.getElementById("dialogAction").innerHTML=(Action);
         }
 
         /// <summary>
@@ -81,13 +80,14 @@ namespace Modules.StaffManager
         public virtual void AddEventHandler()
         {
 
-            Console.WriteLine("Đang thêm các sự kiện - editOrCreateStaff dialog");
-            dom.document.getElementById("dialogAction").onclick =dialogAction_onClickAsync;
-            dom.document.getElementById("dialog_closebutton").onclick = dialog_close;
-            dom.document.getElementById("dialog_closebutton2").onclick = dialog_close;
+            System.Console.WriteLine("Đang thêm các sự kiện - editOrCreateStaff dialog");
+            document.getElementById("dialogAction").onclick =dialogAction_onClickAsync;
+            document.getElementById("dialog_closebutton").onclick = dialog_close;
+
+            document.getElementById("dialog_closebutton2").onclick = dialog_close;
 
         }
-        public virtual void dialog_close(dom.MouseEvent ev)
+        public virtual void dialog_close(MouseEvent ev)
         {
             UnbindEvent();
             ResetDialogData();
@@ -96,7 +96,7 @@ namespace Modules.StaffManager
         ///  hàm xử lý sự kiện khi ấn vào nút có child Id là dialogAction
         /// </summary>
         [EventHandler]
-        public virtual async void dialogAction_onClickAsync(dom.MouseEvent ev)
+        public virtual async void dialogAction_onClickAsync(MouseEvent ev)
         {
 
         }
@@ -106,11 +106,11 @@ namespace Modules.StaffManager
         /// </summary>
         public virtual void UnbindEvent()
         {
-            Console.WriteLine("Đang hủy các sự kiện - editOrCreateStaff dialog");
+            System.Console.WriteLine("Đang hủy các sự kiện - editOrCreateStaff dialog");
             var dialogAction = query($"{_dialogId}_dialogAction".Id());
-            dom.document.getElementById("dialog_closebutton").onclick = null;
-            dom.document.getElementById("dialogAction").onclick = null;
-            dom.document.getElementById("name").onfocus = null;
+            document.getElementById("dialog_closebutton").onclick = null;
+            document.getElementById("dialogAction").onclick = null;
+            document.getElementById("name").onfocus = null;
             dialogAction.unbind("click");
             query(dialogId.Id()).unbind("hidden.bs.modal");
         }
@@ -136,11 +136,11 @@ namespace Modules.StaffManager
         {
             model = new StaffManagerModelView(); // xóa toàn bộ thông tin trong model
 
-            getElementById<dom.HTMLInputElement>("name").value = model.Name;
-            getElementById<dom.HTMLSelectElement>("position").value = model.PositionId.ToString();
-            getElementById<dom.HTMLInputElement>("email").value = model.Email;
-            getElementById<dom.HTMLInputElement>("skype").value = model.Skype;
-            getElementById<dom.HTMLInputElement>("Email2").value = model.ChiefEmail;
+            getElementById<HTMLInputElement>("name").value = model.Name;
+            getElementById<HTMLSelectElement>("position").value = model.PositionId.ToString();
+            getElementById<HTMLInputElement>("email").value = model.Email;
+            getElementById<HTMLInputElement>("skype").value = model.Skype;
+            getElementById<HTMLInputElement>("Email2").value = model.ChiefEmail;
         }
     }
 }

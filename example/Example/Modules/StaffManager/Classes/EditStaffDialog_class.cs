@@ -88,7 +88,7 @@ namespace Modules.StaffManager
                     }
                     else
                     {
-                        ShowMessage("Lỗi xảy ra khi cập nhật", popupNotificationConst.Erorr);
+                        ShowMessage("Lỗi xảy ra khi cập nhật", popupNotificationConst.Error);
                     }
                 }
             }

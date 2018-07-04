@@ -131,11 +131,13 @@ namespace Modules.StaffManager
                     }
                     else
                     {
-                        ShowMessage("Lỗi xảy ra", popupNotificationConst.Erorr);
+                        ShowMessage("Lỗi xảy ra", popupNotificationConst.Error);
                     }
                 }
             }
         }
+
+        
 
         /// <summary>
         ///  Kiểm tra nhập liệu

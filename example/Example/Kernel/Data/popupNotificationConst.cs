@@ -12,6 +12,6 @@ namespace Kernel.Data
     public class popupNotificationConst
     {
         public const string Sucess = "success";
-        public const string Erorr = "error";
+        public const string Error = "error";
     }
 }

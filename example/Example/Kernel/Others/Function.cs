@@ -11,7 +11,7 @@ namespace Kernel
     {
         #region injections
 
-        public Kernel.Browser.Data data;
+        public Kernel.Browser.Helper data;
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace Kernel
         public Function()
         {
             // Khởi tạo các thư viện hỗ trợ cho Function
-            data = new Kernel.Browser.Data();
+            data = new Kernel.Browser.Helper();
         }
     }
 }

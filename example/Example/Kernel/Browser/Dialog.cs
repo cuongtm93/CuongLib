@@ -11,7 +11,7 @@ namespace Kernel.Browser
     /// <summary>
     ///  Dialog có thể sử dụng data
     /// </summary>
-    public class Dialog : Data
+    public class Dialog : Helper
     {
         /// <summary>
         /// DialogId trên trình duyệt

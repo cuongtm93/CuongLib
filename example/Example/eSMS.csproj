@@ -5,6 +5,7 @@
     <NoStdLib>true</NoStdLib>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -15,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Library</RootNamespace>
     <AssemblyName>eSMS</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -39,36 +40,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\AO_NEW_dev\AdvertisingOnline\AnonymousModel\StaffManagerModelView.cs">
-      <Link>Model\View\StaffManagerModelView.cs</Link>
-    </Compile>
     <Compile Include="Ajax\Admin\StaffManager\GetStaffById.cs" />
     <Compile Include="Ajax\Admin\StaffManager\SetKeywordForSearch.cs" />
     <Compile Include="App.cs" />
     <Compile Include="demo\class1.cs" />
     <Compile Include="Kernel\Ajax\AjaxTask.cs" />
+    <Compile Include="Kernel\Browser\Kendo\Grid\Grid.cs" />
+    <Compile Include="Kernel\Browser\Kendo\Grid\Navigation.cs" />
+    <Compile Include="Kernel\Browser\Kendo\IGrid.cs" />
     <Compile Include="Kernel\Data\popupNotificationConst.cs" />
     <Compile Include="Kernel\Extensions\HtmlSupportExtensions.cs" />
     <Compile Include="Kernel\Ajax\Ajax.cs" />
     <Compile Include="Kernel\Attributes\TestedAttribute.cs" />
-    <Compile Include="Kernel\Browser\Data.cs" />
+    <Compile Include="Kernel\Browser\Helper.cs" />
     <Compile Include="Kernel\Browser\Dialog.cs" />
     <Compile Include="Kernel\Extensions\JavascriptExtensions.cs" />
     <Compile Include="Kernel\Dependecies\DI.cs" />
     <Compile Include="Kernel\Dependecies\EnsureLibrariesInstalledCorrectly_func.cs" />
     <Compile Include="Kernel\Http\HttpMethod.cs" />
-    <Compile Include="Kernel\KendoDatePicker\datePicker.cs" />
-    <Compile Include="Kernel\KendoDatePicker\Core\KendoDatePicker.cs" />
-    <Compile Include="Kernel\KendoDatePicker\Core\KendoDatePickerEventHandler.cs" />
     <Compile Include="Kernel\Others\Class.cs" />
     <Compile Include="Kernel\Others\Function.cs" />
     <Compile Include="Kernel\Others\IFunction.cs" />
     <Compile Include="Model\Common\Identifier.cs" />
+    <Compile Include="Model\Common\JsonSucess.cs" />
     <Compile Include="Model\Common\Search.cs" />
     <Compile Include="Model\Database\User.cs" />
+    <Compile Include="Model\View\StaffManagerModelView.cs" />
     <Compile Include="Modules\StaffManager\Classes\AddorEditStaffDialog.cs" />
     <Compile Include="Modules\StaffManager\Classes\AddStaffDialog.cs" />
     <Compile Include="Modules\StaffManager\Classes\EditStaffDialog_class.cs" />
+    <Compile Include="Modules\StaffManager\Classes\Static.cs" />
     <Compile Include="Modules\StaffManager\Functions\AddEventHandler.cs" />
     <Compile Include="Modules\StaffManager\Functions\Consts.cs" />
     <Compile Include="Modules\StaffManager\Functions\ShowDialogEditStaffById.cs" />

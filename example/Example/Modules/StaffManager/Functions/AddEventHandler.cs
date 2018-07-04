@@ -16,7 +16,7 @@ namespace Modules.StaffManager.Functions
     {
         #region "class"
 
-        private Kernel.Browser.Data _data;
+        private Kernel.Browser.Helper _data;
         #endregion
 
         #region "var"
@@ -31,7 +31,7 @@ namespace Modules.StaffManager.Functions
 
         public AddEventHandler()
         {
-            _data = new Kernel.Browser.Data();
+            _data = new Kernel.Browser.Helper();
         }
         public override void Execute()
         {

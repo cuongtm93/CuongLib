@@ -10,18 +10,18 @@ namespace Kernel.Http
     public class HttpMethod
     {
         [InlineConst]
-        public const string POST = "POST";
+        public const string POST = nameof(POST);
 
         [InlineConst]
-        public const string GET = "GET";
+        public const string GET = nameof(GET);
 
         [InlineConst]
-        public const string PUT = "PUT";
+        public const string PUT = nameof(PUT);
 
         [InlineConst]
-        public const string PATCH = "PATCH";
+        public const string PATCH = nameof(PATCH);
 
         [InlineConst]
-        public const string DELETE = "DELETE";
+        public const string DELETE = nameof(DELETE);
     }
 }

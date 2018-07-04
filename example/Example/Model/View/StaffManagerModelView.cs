@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
-namespace Model.View
+namespace AdvertisingOnline.AnonymousModel
 {
     public class StaffManagerModelView
     {
@@ -17,5 +16,6 @@ namespace Model.View
         public string Position { get; set; }
         public string Skype { get; set; }
         public string ChiefName { get; set; }
+        public string ChiefEmail { get; set; }
     }
 }
