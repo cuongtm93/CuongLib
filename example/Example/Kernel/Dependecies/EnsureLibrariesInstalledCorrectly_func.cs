@@ -31,7 +31,6 @@ namespace Kernel.Dependecies
         {
             try
             {
-                Script.Write("debugger;");
                 var x = Script.Get(lib).As<object>();
                 var k = x.IsPrototypeOf(Retyped.Primitive.Undefined.Value);
                 return new Action<string>(Success);
