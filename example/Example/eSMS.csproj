@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Ajax\Admin\StaffManager\GetStaffById.cs" />
     <Compile Include="Ajax\Admin\StaffManager\SetKeywordForSearch.cs" />
-    <Compile Include="App.cs" />
     <Compile Include="demo\class1.cs" />
     <Compile Include="Kernel\Ajax\AjaxTask.cs" />
     <Compile Include="Kernel\Browser\Kendo\Grid\Grid.cs" />
